@@ -222,16 +222,22 @@ Where alpha = 0.15 (amount parameter)
 **How it works:**
 
 1. **RMS Calculation** (every audio frame):
-   $$\text{RMS} = \sqrt{\frac{1}{N}\sum_{n=1}^{N} x[n]^2}$$
+```
+RMS = sqrt( (1/N) * sum_{n=1}^N x[n]^2 )
+```
 
 2. **Smoothing** (prevents jumpy gain changes):
-   $$\text{smoothed\_RMS} = (1-\alpha) \times \text{old} + \alpha \times \text{new\_RMS}$$
-   - $\alpha = 0.35$ (smoothing factor)
+```
+smoothed_RMS = (1 - alpha) * old + alpha * new_RMS
+```
+- alpha = 0.35 (smoothing factor)
 
 3. **Gain Mapping** (noise → gain):
-   - Compute ratio: $\text{ratio} = \text{smoothed\_RMS} / \text{RMS\_ref}$
-   - Clamp ratio to [0.1, 12.0]
-   - Map logarithmically to gain range [min_gain, max_gain]
+```
+ratio = smoothed_RMS / RMS_ref
+```
+- Clamp ratio to [0.1, 12.0]
+- Map logarithmically to gain range [min_gain, max_gain]
 
 **Key Parameters:**
 ```python
@@ -256,9 +262,12 @@ If mic RMS < noise_floor → apply min_gain
 
 **How it works:**
 1. Create high-shelf filter (>2.5 kHz) using stateful IIR filter
-2. Map ambient noise RMS to boost amount: $\text{boost} = \text{clip}(\text{noise\_RMS} \times 10, 0.0, 0.3)$
-3. Smooth boost amount: $\text{boost} = 0.9 \times \text{old} + 0.1 \times \text{target}$
-4. Apply: $\text{output} = \text{audio} + \text{highs} \times \text{boost}$
+2. Map ambient noise RMS to boost amount:
+```
+boost = clip(noise_RMS * 10, 0.0, 0.3)
+```
+3. Smooth boost amount: boost = 0.9 x old + 0.1 x target
+4. Apply: output = audio + highs x boost
 
 **Why it matters:** When noise increases, high frequencies get masked first. Adaptive boost compensates in real-time.
 
