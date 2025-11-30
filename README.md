@@ -1,7 +1,7 @@
 # Smart PA System - Complete Technical Explanation
 
 **Project:** Smart PA (Public Address) System with Audio Clarity Enhancement  
-**Author:** Group 5 - Ayush Kumar (22125) & Dheeraj ( 22161 )
+**Author:** Group 5 - Ayush Kumar (22125) & Dheeraj (22161)
 
 ---
 
@@ -410,7 +410,7 @@ python -m pip install sounddevice --user
 
 ---
 
-## 🎓 Key Concepts for Sound Engineers
+## 🎓 Key Concepts -  Sound Engineers
 
 ### 1. **Why Spectral Processing?**
 Time-domain noise gates struggle with stationary noise. Spectral gating operates in frequency domain, allowing selective attenuation of noisy bins while preserving speech formants.
@@ -479,7 +479,7 @@ High frequencies mask easily in noise. The 2-4 kHz boost and adaptive clarity co
 
 ---
 
-## 🚀 Suggested Improvements & Experiments
+##  Suggested Improvements & Experiments (future scope)
 
 ### Immediate Enhancements
 
@@ -595,7 +595,7 @@ Where:
 
 ---
 
-## 🎯 Presentation Summary (One-Slide Version)
+## Summary 
 
 ### Smart PA System: Intelligibility-First Announcement Processor
 
@@ -651,6 +651,8 @@ Perfect for educational purposes in:
 - DSP laboratories
 - Live sound design classes
 - Acoustics and psychoacoustics studies
+
+  **Made by Ayush & Dheeraj**
 
 ---
 
