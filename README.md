@@ -1,9 +1,7 @@
 # Smart PA System - Complete Technical Explanation
-## For Sound Engineering Professionals
 
-**Date:** November 30, 2025  
 **Project:** Smart PA (Public Address) System with Audio Clarity Enhancement  
-**Author:** Technical Documentation
+**Author:** Group 5 - Ayush Kumar (22125) & Dheeraj ( 22161 )
 
 ---
 
