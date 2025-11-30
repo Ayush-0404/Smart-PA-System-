@@ -147,7 +147,9 @@ ratio = 3:1          # Compression ratio for excess sibilance
 ```
 
 **Compression Formula:**
-$$\text{gain\_reduction} = \frac{1}{1 + \frac{\text{excess} - 1}{\text{ratio}}}$$
+```
+gain_reduction = 1 / (1 + ((excess - 1) / ratio))
+```
 
 **Why it matters:** PA systems with horn drivers can make sibilance painfully harsh. De-essing makes speech comfortable without losing clarity.
 
@@ -178,7 +180,9 @@ else:
 ```
 
 Where:
-$$\alpha_{\text{attack}} = 1 - e^{-1/(t_{\text{attack}} \times \text{sample\_rate})}$$
+```
+alpha_attack = 1 - exp(-1 / (t_attack * sample_rate))
+```
 
 **Recombination:**
 ```python
@@ -204,9 +208,10 @@ output = low_compressed + (mid_compressed × 1.2) + high_compressed
 - Similar to analog saturation
 
 **Mix Formula:**
-$$\text{output} = (1 - \alpha) \times \text{original} + \alpha \times (\text{original} + 0.3 \times \text{excited\_highs})$$
-
-Where $\alpha = 0.15$ (amount parameter)
+```
+output = (1 - alpha) * original + alpha * (original + 0.3 * excited_highs)
+```
+Where alpha = 0.15 (amount parameter)
 
 **Why it matters:** Adds "air" and "sheen" that helps speech cut through without sounding processed.
 
@@ -405,10 +410,13 @@ Time-domain noise gates struggle with stationary noise. Spectral gating operates
 
 ### 2. **Attack/Release in Digital Domain**
 The envelope follower uses exponential smoothing:
-$$y[n] = \alpha \cdot x[n] + (1-\alpha) \cdot y[n-1]$$
-
-This mimics analog RC circuits. Attack/release times convert to $\alpha$ via:
-$$\alpha = 1 - e^{-1/(t \times f_s)}$$
+```
+y[n] = alpha * x[n] + (1 - alpha) * y[n-1]
+```
+This mimics analog RC circuits. Attack/release times convert to alpha via:
+```
+alpha = 1 - exp(-1 / (t * fs))
+```
 
 ### 3. **Multiband vs. Single-Band Compression**
 Single-band: Bass energy can trigger gain reduction, making treble "duck"  
@@ -568,16 +576,15 @@ Where:
 - $s$ = complex frequency
 
 ### Compression Gain Curve
-$$G_{\text{dB}} = \begin{cases}
-0 & L < T \\
-+(T - L) \cdot \left(1 - \frac{1}{R}\right) & L \geq T
-\end{cases}$$
-
+```
+G_dB = 0, if L < T
+G_dB = (T - L) * (1 - 1/R), if L >= T
+```
 Where:
-- $L$ = input level (dB)
-- $T$ = threshold (dB)
-- $R$ = ratio
-- $G$ = gain reduction (dB)
+- L = input level (dB)
+- T = threshold (dB)
+- R = ratio
+- G = gain reduction (dB)
 
 ---
 
