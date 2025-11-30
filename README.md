@@ -1,7 +1,5 @@
 # Smart PA System - Complete Technical Explanation
-## For Sound Engineering Professionals
 
-]  
 **Project:** Smart PA (Public Address) System with Audio Clarity Enhancement  
 **Author:** Group 5 - Ayush Kumar (22125) & Dheeraj ( 22161 )
 
