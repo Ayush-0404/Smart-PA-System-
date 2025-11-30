@@ -77,10 +77,8 @@ freq_smoothing = 5      # Smoothing across frequency bins
 **Why it matters:** Traditional noise gates can create "pumping" artifacts. Spectral gating processes each frequency independently, preserving speech while reducing steady-state noise (HVAC, traffic, etc.).
 
 **Mathematical Foundation:**
-$$\text{Gate}[f, t] = \begin{cases} 
-1.0 & \text{if } |X[f,t]| > \text{threshold}[f] \\
-0.1 & \text{otherwise}
-\end{cases}$$
+
+$$\text{Gate}[f, t] = \begin{cases} 1.0 & \text{if } |X[f,t]| > \text{threshold}[f] \\ 0.1 & \text{otherwise} \end{cases}$$
 
 Where $X[f,t]$ is the STFT magnitude at frequency $f$ and time $t$.
 
@@ -566,10 +564,8 @@ Where:
 - $s$ = complex frequency
 
 ### Compression Gain Curve
-$$G_{\text{dB}} = \begin{cases}
-0 & L < T \\
-+(T - L) \cdot \left(1 - \frac{1}{R}\right) & L \geq T
-\end{cases}$$
+
+$$G_{\text{dB}} = \begin{cases} 0 & L < T \\ +(T - L) \cdot \left(1 - \frac{1}{R}\right) & L \geq T \end{cases}$$
 
 Where:
 - $L$ = input level (dB)
