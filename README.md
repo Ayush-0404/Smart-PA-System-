@@ -5,7 +5,7 @@
 
 ---
 
-## 📋 Executive Summary - 
+## 📋 Executive Summary
 
 This project implements an intelligent public address system that **automatically optimizes speech intelligibility** in noisy environments. It combines offline audio processing (clarity enhancement) with real-time adaptive gain control (dynamic leveling) to ensure announcements remain clear and audible regardless of ambient noise conditions.
 
